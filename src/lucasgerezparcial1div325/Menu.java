@@ -1,21 +1,21 @@
-
 package lucasgerezparcial1div325;
 
 import java.util.Scanner;
 
 public class Menu {
+
     //---------------------------------------------------------
     //atributos
     private Scanner sc;
     private EmpresaTurismo empresa;
-    
+
     //---------------------------------------------------------
     //Constructor
     public Menu(Scanner sc, EmpresaTurismo empresa) {
         this.sc = sc;
         this.empresa = empresa;
     }
-    
+
     //---------------------------------------------------------
     //metodos de clase y estaticos
     public static int leerEnteros(String mensaje, Scanner scanner) {
@@ -29,7 +29,7 @@ public class Menu {
             }
         }
     }
-    
+
     public static double leerDoubles(String mensaje, Scanner scanner) {
         while (true) {
             System.out.println(mensaje);
@@ -55,40 +55,56 @@ public class Menu {
     }
 
     public void iniciar() {
+        
+        System.out.println("--------- INICIANDO PROGRAMA DE VEHICULOS ---------");
         boolean activo = true;
         while (activo) {
-            System.out.println("\nMenu de gestion de expediciones espaciales ");
-            System.out.println("1. Agregar Equipo");
-            System.out.println("2. Mostrar todos los equipos");
-            System.out.println("3. Preparar EQUIPOS");
-            System.out.println("4. Filtrar Equipamiento Por Nivel De Uso");
-            System.out.println("5. Salir");
+            System.out.println("\n************ Menu de Vehiculos ************");
+            System.out.println("1.Agregar vehiculo");
+            System.out.println("2.Mostrar todos los vehiculos");
+            System.out.println("3.Realizar servicios turisticos");
+            System.out.println("4.Buscar vehiculo por patente");
+            System.out.println("5.Mostrar vehiculos con capacidad mayor a un valor ingresado");
+            System.out.println("6.Mostrar vehiculos ordenados por anio de fabricacion descendente");
+            System.out.println("7.Mostrar vehiculos ordenados por capacidad de pasajeros descendente");
+            System.out.println("8.Salir");
 
-            int opcion = leerEnteros("Seleccione: ", sc);
+            int opcion = leerEnteros("Seleccione una opcion del menu: ", sc);
             switch (opcion) {
                 case 1:
-                    //this.empresa.agregarEquipo(sc);
+                    this.empresa.agregarVehiculo(sc);
+
                     break;
                 case 2:
-                    //this.empresa.mostrarEquipos();
+                    this.empresa.mostrarVehiculos();
+
                     break;
                 case 3:
-                    //this.empresa.prepararEquipos();
+                    this.empresa.realizarServicioTuristico();
+
                     break;
                 case 4:
-                    /*NivelUso n1 = this.empresa.seleccionarNivelUso(sc);
-                    if(n1 == null){
-                        System.out.println("XXX ERROR XXX : Opcion incorrecta ");
-                        break;
-                    }
-                    this.empresa.filtrarPorNivelUso(n1);
-                    */
+                    this.empresa.buscarVehiculoPorPatente(sc);
+
                     break;
                 case 5:
-                    //System.out.println("------ PROGRAMA FINALIZADO ------");
+                    this.empresa.mostrarVehiculosConCapacidadMayor(sc);
+
+                    break;
+                case 6:
+                    this.empresa.mostrarVehiculosPorAñoDeFabricacionDesc();
+                    
+                    break;
+                case 7:
+                    this.empresa.mostrarVehiculosPorCapacidadDePasajDesc();
+                    
+                    break;
+                case 8:
+                    System.out.println("--------- PROGRAMA DE VEHICULOS FINALIZADO ---------");
+                    System.out.println("alumno: Lucas Gaston Gerez");
                     return;
-                default :
-                    //System.out.println("opcion invalida");
+                default:
+                    System.out.println("opcion invalida");
                     continue;
             }
         }

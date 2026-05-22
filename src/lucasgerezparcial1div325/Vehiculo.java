@@ -1,6 +1,6 @@
 package lucasgerezparcial1div325;
 
-public abstract class Vehiculo {
+public abstract class Vehiculo{
     //----------------------------------------------------
     private String patente;
     private String marca;
@@ -38,5 +38,9 @@ public abstract class Vehiculo {
     public String mostrarVehiculo(){
         return "patente: " + this.patente + ", marca: " + this.marca + ", capacidad de Pasajeros: " + this.capacidadPasajeros + ", Anio De Fabricacion: " + this.anioFabricacion + ",";
     }
+
+    
+    
+    
     
 }

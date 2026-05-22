@@ -1,6 +1,8 @@
 package lucasgerezparcial1div325;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class EmpresaTurismo {
@@ -16,7 +18,12 @@ public class EmpresaTurismo {
     public ArrayList<Vehiculo> getVehiculos() {
         return vehiculos;
     }
-
+    
+    //
+    public void agregarVehiculo(Vehiculo v){
+        this.vehiculos.add(v);
+    }
+    
     //---------------------------------------------------
     //opt 1
     public void agregarVehiculo(Scanner scanner) {
@@ -140,13 +147,27 @@ public class EmpresaTurismo {
     }
     
     
+    //AUXILIAR
+    private void mostrarVehiculos(ArrayList<Vehiculo> vehicls){ //mostrar vehiculos de un Array de vehiculos
+        System.out.println("\n------------MOSTRANDO VEHICULOS ------------\n"); // utilizada en la opcion 6 y 7 del menu
+        for(Vehiculo v : vehicls){
+            System.out.println(v.mostrarVehiculo());
+        }
+        System.out.println("\n------------FIN DE DEMOSTRACION DE VEHICULOS ------------\n");
+    }
+    
     //---------------------------------------------------------------
     //opt3
     
     public void realizarServicioTuristico(){
         LanchaTuristica l1 = null;
         ColectivoTuristico c1 = null;
+        System.out.println("-------- Realizando Servicio Turistico --------");
         
+        if(this.vehiculos.isEmpty()){
+            System.out.println("-------- ADVERTENCIA, NO HAY VEHICULOS PARA SERVICIO TURISTICO --------");
+        }
+                
         for(Vehiculo v : this.vehiculos){
             if (v instanceof LanchaTuristica) {
                 l1 = (LanchaTuristica) v;
@@ -158,6 +179,8 @@ public class EmpresaTurismo {
                 
             }
         }
+        
+        System.out.println("-------- Fin de Servicios turisticos --------");
     }
     
     
@@ -193,9 +216,47 @@ public class EmpresaTurismo {
         }
         
         for (Vehiculo v : this.vehiculos){
-            
+            if(v.getCapacidadPasajeros() > num){ //capacidad mayor, NO mayor igual
+                System.out.println(v.mostrarVehiculo()); 
+            }
         }
     }
     
+    //---------------------------------------------------------------
+    //opt6
+    
+    public void mostrarVehiculosPorAñoDeFabricacionDesc(){
+        ArrayList<Vehiculo> vehcls = new ArrayList<Vehiculo>(getVehiculos());
+        
+        Collections.sort(vehcls, new Comparator<Vehiculo>() {
+            @Override
+            public int compare(Vehiculo v1, Vehiculo v2) {
+                
+                return Integer.compare(v2.getAnioFabricacion(), v1.getAnioFabricacion());
+            }
+        });
+        System.out.println("********** Vehiculos Por Anio de Fabricacion **********");
+        mostrarVehiculos(vehcls);
+            
+    }
+    
+    
+    //---------------------------------------------------------------
+    //opt7
+    
+    public void mostrarVehiculosPorCapacidadDePasajDesc(){
+        ArrayList<Vehiculo> vehcls = new ArrayList<Vehiculo>(getVehiculos());
+        
+        Collections.sort(vehcls, new Comparator<Vehiculo>() {
+            @Override
+            public int compare(Vehiculo v1, Vehiculo v2) {
+                
+                return Integer.compare(v2.getCapacidadPasajeros(), v1.getCapacidadPasajeros());
+            }
+        });
+        System.out.println("********** Vehiculos Por Capacidad De Pasajeros **********");
+        mostrarVehiculos(vehcls);
+            
+    }
     
 }
