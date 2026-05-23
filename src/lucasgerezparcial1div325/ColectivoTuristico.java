@@ -17,7 +17,7 @@ public class ColectivoTuristico extends Vehiculo {
         return "*Colectivo Turistico, " + super.mostrarVehiculo() + "cantidad de pisos: " + this.cantidadPisos; 
     }
     
-    public void realizarServicioTuristico(){
+    public void realizarServicioTuristicoColectivo(){
         System.out.println("*Realizando Servicio turistico de Colectivo con patente " + getPatente() + " y con " + this.cantidadPisos + " pisos");
     }
     

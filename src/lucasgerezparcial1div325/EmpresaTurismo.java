@@ -191,6 +191,7 @@ public class EmpresaTurismo {
     
     public void buscarVehiculoPorPatente(Scanner scanner){
         String patente = Menu.leerTexto("Ingrese la patente a buscar: ", scanner);
+        boolean encontrado = false;
         
         while (patente.trim().isEmpty()){
             patente = Menu.leerTexto("XXX ERROR XXX: Patente Vacia, Ingrese una patente valida a buscar: ", scanner);
@@ -203,6 +204,10 @@ public class EmpresaTurismo {
                 System.out.println(v.mostrarVehiculo());
                 return;
             }
+        }
+        if(!encontrado){
+            System.out.println("XXX ADVERTENCIA XXX :  NO SE ENCONTRO LA PATENTE");
+            return;
         }
         
     }

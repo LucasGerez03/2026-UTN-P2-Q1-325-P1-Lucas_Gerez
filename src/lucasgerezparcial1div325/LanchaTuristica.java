@@ -19,7 +19,7 @@ public class LanchaTuristica extends Vehiculo {
         return "*Lancha Turistica, " + super.mostrarVehiculo() + "tipo De Motor: " + this.tipoMotor; 
     }
     
-    public void realizarServicioTuristico(){
+    public void realizarServicioTuristicoLancha(){
         System.out.println("*Realizando Servicio turistico de Lancha con patente " + getPatente() + " y tipo de motor" + this.tipoMotor);
     }
 }
