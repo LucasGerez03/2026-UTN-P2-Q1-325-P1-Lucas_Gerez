@@ -59,12 +59,14 @@ public class EmpresaTurismo {
         int capacidadPasajeros = Menu.leerEnteros("Ingrese la capacidad de pasajeros", scanner);
         if (capacidadPasajeros <= 0) {
             System.out.println("XXX ERROR XXX : Capacidad de pasajeros 0 o nula");
+            return;
         }
         ////---------------------------------------------------
-        int anioFabricacion = Menu.leerEnteros(patente, scanner);
+        int anioFabricacion = Menu.leerEnteros("Ingrese un anio de fabricacion: ", scanner);
 
         if (anioFabricacion < 1990 || anioFabricacion > 2026) {
             System.out.println("XXX ERROR XXX : Año de Fabriacion invalido, rango: (1990 - 2026)");
+            return;
         }
         ////---------------------------------------------------
         switch (opt) {
@@ -171,11 +173,11 @@ public class EmpresaTurismo {
         for(Vehiculo v : this.vehiculos){
             if (v instanceof LanchaTuristica) {
                 l1 = (LanchaTuristica) v;
-                l1.realizarServicioTuristico();
+                l1.realizarServicioTuristicoLancha();
                 
             }else if (v instanceof ColectivoTuristico){
-                c1 = (ColectivoTuristico) c1;
-                c1.realizarServicioTuristico();
+                c1 = (ColectivoTuristico) v;
+                c1.realizarServicioTuristicoColectivo();
                 
             }
         }
